@@ -17,7 +17,7 @@
 
         <section id="main">
             {{outlet}}
-            <input type="checkbox" id="toggle-all">
+            {{view Ember.Checkbox id="toggle-all" checkedBinding="areAllDone"}}
         </section>
 
         <footer id="footer">
