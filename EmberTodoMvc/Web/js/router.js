@@ -3,8 +3,13 @@ Todos.Router.map(function () {
         this.route('active');
         this.route('completed');
     });
-})
+});
 
+Todos.TodosRoute = Ember.Route.extend({
+    model: function () {
+        return Todos.Todo.find();
+    }
+});
 Todos.TodosIndexRoute = Ember.Route.extend({
    model: function () {
        return Todos.Todo.find();
@@ -14,7 +19,7 @@ Todos.TodosIndexRoute = Ember.Route.extend({
 Todos.TodosActiveRoute = Ember.Route.extend({
     model: function () {
         return Todos.Todo.filter(function (todo) {
-           if (todo.get('isCompleted')) { return true; }
+           return todo.get('isCompleted') !== true;
         });
     },
     renderTemplate: function (controller) {
@@ -25,12 +30,11 @@ Todos.TodosActiveRoute = Ember.Route.extend({
 Todos.TodosCompletedRoute = Ember.Route.extend({
     model: function () {
         return Todos.Todo.filter(function (todo) {
-            if (todo.get('isCompleted')) { return true; }
+            return todo.get('isCompleted') == true;
         });
     },
-    renderTemplate: function () {
-        debugger;
-        this.render('todos/index', { controller: 'todos' });
+    renderTemplate: function (controller) {
+        this.render('todos/index', { controller: controller });
     }
 })
 
