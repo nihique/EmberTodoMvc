@@ -1,5 +1,5 @@
 Todos.TodosController = Ember.ArrayController.extend({
-    createTodo: function() {
+    createTodo: function () {
         var title = this.get('newTitle');
         if (!title.trim()) return;
         var todo = Todos.Todo.createRecord({
@@ -10,12 +10,16 @@ Todos.TodosController = Ember.ArrayController.extend({
         this.set('newTitle', '');
     },
 
-    remaining: function() {
+    remaining: function () {
         return this.filterProperty('isCompleted', false).get('length');
     }.property('@each.isCompleted'),
 
-    inflection: function() {
+    inflection: function () {
         var remaining = this.get('remaining');
         return remaining === 1 ? 'item' : 'items';
-    }.property('remaining')
+    }.property('remaining'),
+
+    completed: function () {
+        return this.filterProperty('isCompleted', true).get('length');
+    }.property('@each.isCompleted')
 });
