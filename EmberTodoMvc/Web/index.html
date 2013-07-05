@@ -24,13 +24,13 @@
             <span id="todo-count"><strong>{{remaining}}</strong> {{inflection}} left</span>
             <ul id="filters">
                 <li>
-                    {{#linkTo "todos.index" activeClass="selected"}}All{{/linkTo}}
+                    {{#linkTo 'todos.index' activeClass="selected"}}All{{/linkTo}}
                 </li>
                 <li>
-                    {{#linkTo "todos.active" activeClass="selected"}}Active{{/linkTo}}
+                    {{#linkTo 'todos.active' activeClass="selected"}}Active{{/linkTo}}
                 </li>
                 <li>
-                    <a href="completed">Completed</a>
+                    {{#linkTo 'todos.completed' activeClass="selected"}}Completed{{/linkTo}}
                 </li>
             </ul>
             <button id="clear-completed">
