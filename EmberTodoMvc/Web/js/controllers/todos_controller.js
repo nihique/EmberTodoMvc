@@ -30,10 +30,17 @@ Todos.TodosController = Ember.ArrayController.extend({
     clearCompleted: function () {
         var completed = this.filterProperty('isCompleted', true);
         completed.invoke('deleteRecord');
-        this.get('store').commit();
+        this.get('store').save();
     },
 
-    areAllDone: function () {
-        return this.get('remaining') === 0;
+    areAllDone: function (key, value) {
+        if (value === undefined) {
+            return this.get('remaining') === 0;
+        }
+        else {
+            this.setEach('isCompleted', value);
+            this.get('store').save();
+            return value;
+        }
     }.property('remaining')
 });
