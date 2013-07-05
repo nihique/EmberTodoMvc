@@ -5,5 +5,5 @@ window.Todos = Ember.Application.create({
 });
 
 Ember.LOG_VERSION = true;
-Ember.LOG_BINDINGS = true;
+//Ember.LOG_BINDINGS = true;
 Ember.LOG_STACKTRACE_ON_DEPRECATION = true;
